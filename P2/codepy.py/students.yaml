@@ -1,0 +1,256 @@
+- id 1
+  name: Dayana Ivonne Alcala Neri
+  email: dayana.alcala.2025.tmp@mit.edu
+  exam: 3
+  note: 6
+  grade: 2
+  group: I
+  shift: V
+- id 2
+  name: Dulce Anahi Alcala Neri
+  email: dulce.alcala.2025.tmp@mit.edu
+  exam: 5
+  note: 2
+  grade: 2
+  group: I
+  shift: V
+- id 3
+  name: Miriam Daniela Barajas Marin
+  email: miriam.barajas.2025.tmp@mit.edu
+  exam: 4
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 4
+  name: Gael Santiago Carrillo Castillo
+  email: gael.carrillo.2025.tmp@mit.edu
+  exam: 1
+  note: 8
+  grade: 2
+  group: I
+  shift: V
+- id 5
+  name: Angel Antonio Cazares Nuñez
+  email: angel.cazares.2025.tmp@mit.edu
+  exam: 4
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 6
+  name: Angel Santiago Coronel Hernández
+  email: angel.coronel.2025.tmp@mit.edu
+  exam: 5
+  note: 4
+  grade: 2
+  group: I
+  shift: V
+- id 7
+  name: Miguel Angel Corrales Iñiguez
+  email: miguel.corrales.2025.tmp@mit.edu
+  exam: 5
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 8
+  name: Cesar Omar Enriquez Aguilar
+  email: cesar.enriquez.2025.tmp@mit.edu
+  exam: 4
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 9
+  name: Julissa Espinosa Luna
+  email: julissa.espinosa.2025.tmp@mit.edu
+  exam: 0
+  note: 0
+  grade: 2
+  group: I
+  shift: V
+- id 10
+  name: david alejandro franco garcia
+  email: david.franco.2025.tmp@mit.edu
+  exam: 5
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 11
+  name: Zoe Fernanda Garcia López
+  email: zoe.garcia.2025.tmp@mit.edu
+  exam: 4
+  note: 2
+  grade: 2
+  group: I
+  shift: V
+- id 12
+  name: angel geovanni sanchez de la cruz
+  email: angel.sanchez.2025.tmp@mit.edu
+  exam: 6
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 13
+  name: Meghan Lopez Peña
+  email: meghan.lopez.2025.tmp@mit.edu
+  exam: 10
+  note: 10
+  grade: 2
+  group: I
+  shift: V
+- id 14
+  name: diego alfonso lopez rodriguez
+  email: diego.lopez.2025.tmp@mit.edu
+  exam: 6
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 15
+  name: Rubén Luquin Sánchez
+  email: ruben.luquin.2025.tmp@mit.edu
+  exam: 7
+  note: 6
+  grade: 2
+  group: I
+  shift: V
+- id 16
+  name: alondra yanin martinez reygadas
+  email: alondra.martinez.2025.tmp@mit.edu
+  exam: 5
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 17
+  name: alexa xiadany martinez talavera
+  email: alexa.martinez.2025.tmp@mit.edu
+  exam: 4
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 18
+  name: Diego Montiel Cabrera
+  email: diego.montiel.2025.tmp@mit.edu
+  exam: 6
+  note: 3
+  grade: 2
+  group: I
+  shift: V
+- id 19
+  name: carlos adrian murillo ramos
+  email: carlos.murillo.2025.tmp@mit.edu
+  exam: 0
+  note: 0
+  grade: 2
+  group: I
+  shift: V
+- id 20
+  name: Diego Perez Melesio
+  email: diego.perez.2025.tmp@mit.edu
+  exam: 5
+  note: 9
+  grade: 2
+  group: I
+  shift: V
+- id 21
+  name: sebastian ponce delgado
+  email: sebastian.ponce.2025.tmp@mit.edu
+  exam: 5
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 22
+  name: Joshua Asael Ramirez Cuellar
+  email: joshua.ramirez.2025.tmp@mit.edu
+  exam: 3
+  note: 6
+  grade: 2
+  group: I
+  shift: V
+- id 23
+  name: victoria ramirez martinez
+  email: victoria.ramirez.2025.tmp@mit.edu
+  exam: 4
+  note: 3
+  grade: 2
+  group: I
+  shift: V
+- id 24
+  name: jesus mateo reyes barron
+  email: jesus.reyes.2025.tmp@mit.edu
+  exam: 0
+  note: 0
+  grade: 2
+  group: I
+  shift: V
+- id 25
+  name: Luis Manuel Rodriguez Rodriguez
+  email: luis.rodriguez.2025.tmp@mit.edu
+  exam: 5
+  note: 3
+  grade: 2
+  group: I
+  shift: V
+- id 26
+  name: yurem alejandro rodriguez sanchez
+  email: yurem.rodriguez.2025.tmp@mit.edu
+  exam: 6
+  note: 5
+  grade: 2
+  group: I
+  shift: V
+- id 27
+  name: Yoel Rodriguez Valdenegro
+  email: yoel.rodriguez.2025.tmp@mit.edu
+  exam: 3
+  note: 1
+  grade: 2
+  group: I
+  shift: V
+- id 28
+  name: maximo dante sandoval delgado
+  email: maximo.sandoval.2025.tmp@mit.edu
+  exam: 6
+  note: 3
+  grade: 2
+  group: I
+  shift: V
+- id 29
+  name: Emily Sandoval Madero
+  email: emily.sandoval.2025.tmp@mit.edu
+  exam: 6
+  note: 9
+  grade: 2
+  group: I
+  shift: V
+- id 30
+  name: OSCAR EDUARDO SANDOVAL VIZCAINO
+  email: sandoval.oscar.2024.tmp@mit.edu
+  exam: 0
+  note: 0
+  grade: 2
+  group: I
+  shift: V
+- id 31
+  name: Eduardo Tadeo Valenzuela Villa
+  email: eduardo.valenzuela.2025.tmp@mit.edu
+  exam: 5
+  note: 4
+  grade: 2
+  group: I
+  shift: V
+- id 32
+  name: Juan Diedo Vargas Villegas
+  email: juan.vargas.2025.tmp@mit.edu
+  exam: 4
+  note: 2
+  grade: 2
+  group: I
+  shift: V
