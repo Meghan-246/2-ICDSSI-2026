@@ -1,0 +1,34 @@
+def redundant_signal_towers(x, k):
+    towers = sorted(zip(x, k), key=lambda t: t[0])
+    n = len(towers)
+
+    if n == 1:
+        return 0
+
+    def bad(a, b, c):
+        xa, ka = towers[a]
+        xb, kb = towers[b]
+        xc, kc = towers[c]
+        cab = xa + xb + kb - ka
+        cbc = xb + xc + kc - kb
+        return cab >= cbc
+
+    stack = []
+    for i in range(n):
+        while len(stack) >= 2:
+            if bad(stack[-2], stack[-1], i):
+                stack.pop()
+            else:
+                break
+        stack.append(i)
+
+    active = set(stack)
+    for i in range(1, n):
+        xa, ka = towers[i-1]
+        xb, kb = towers[i]
+        if ka >= kb + (xb - xa):
+            active.discard(i)
+        if kb >= ka + (xb - xa):
+            active.discard(i-1)
+
+    return n - len(active)
