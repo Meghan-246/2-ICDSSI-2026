@@ -1,0 +1,55 @@
+﻿import heapq
+from collections import Counter
+
+
+def frequencies(s):
+    if not s:
+        return []
+    freq = Counter(s)
+    return list(freq.items())
+
+
+def build_tree(freqs):
+    if not freqs or len(freqs) <= 1:
+        return None
+    
+    heap = [[freq, [sym, ""]] for sym, freq in freqs]
+    heapq.heapify(heap)
+    
+    while len(heap) > 1:
+        lo = heapq.heappop(heap)
+        hi = heapq.heappop(heap)
+        for pair in lo[1:]:
+            pair[1] = '0' + pair[1]
+        for pair in hi[1:]:
+            pair[1] = '1' + pair[1]
+        heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
+    
+    return heap[0][1:]
+
+
+def encode(freqs, s):
+    if not freqs or len(freqs) <= 1:
+        return None
+    
+    tree = build_tree(freqs)
+    codes = {sym: code for sym, code in tree}
+    return ''.join(codes[c] for c in s)
+
+
+def decode(freqs, bits):
+    if not freqs or len(freqs) <= 1:
+        return None
+    
+    tree = build_tree(freqs)
+    codes = {code: sym for sym, code in tree}
+    
+    result = []
+    current = ""
+    for bit in bits:
+        current += bit
+        if current in codes:
+            result.append(codes[current])
+            current = ""
+    
+    return ''.join(result)
