@@ -1,0 +1,86 @@
+﻿class Compiler:
+    def pass1(self, program):
+        tokens = self.tokenize(program)
+        self.pos = 0
+        self.tokens = tokens
+        
+        # Parsear arg-list
+        assert self.tokens[self.pos] == '['
+        self.pos += 1
+        args = []
+        while self.tokens[self.pos] != ']':
+            args.append(self.tokens[self.pos])
+            self.pos += 1
+        self.pos += 1  # consume ']'
+        
+        self.args = args
+        ast = self.parse_expression()
+        return ast
+
+
+    def tokenize(self, program):
+        import re
+        return re.findall(r'\[|\]|[a-zA-Z]+|[0-9]+|[+\-*/()]', program)
+
+
+    def parse_expression(self):
+        node = self.parse_term()
+        while self.pos < len(self.tokens) and self.tokens[self.pos] in ('+', '-'):
+            op = self.tokens[self.pos]
+            self.pos += 1
+            node = {'op': op, 'a': node, 'b': self.parse_term()}
+        return node
+
+
+    def parse_term(self):
+        node = self.parse_factor()
+        while self.pos < len(self.tokens) and self.tokens[self.pos] in ('*', '/'):
+            op = self.tokens[self.pos]
+            self.pos += 1
+            node = {'op': op, 'a': node, 'b': self.parse_factor()}
+        return node
+
+
+    def parse_factor(self):
+        tok = self.tokens[self.pos]
+        if tok == '(':
+            self.pos += 1
+            node = self.parse_expression()
+            self.pos += 1  # consume ')'
+            return node
+        self.pos += 1
+        if tok.isdigit() or tok.lstrip('-').isdigit():
+            return {'op': 'imm', 'n': int(tok)}
+        else:
+            if tok in self.args:
+                return {'op': 'arg', 'n': self.args.index(tok)}
+            raise ValueError(f"Unknown variable: {tok}")
+
+
+    def pass2(self, ast):
+        op = ast['op']
+        if op == 'imm' or op == 'arg':
+            return ast
+        a = self.pass2(ast['a'])
+        b = self.pass2(ast['b'])
+        if a['op'] == 'imm' and b['op'] == 'imm':
+            ops = {'+': a['n']+b['n'], '-': a['n']-b['n'],
+                   '*': a['n']*b['n'], '/': a['n']//b['n']}
+            return {'op': 'imm', 'n': ops[op]}
+        return {'op': op, 'a': a, 'b': b}
+
+
+    def pass3(self, ast):
+        op = ast['op']
+        if op == 'imm':
+            return [f'IM {ast["n"]}']
+        if op == 'arg':
+            return [f'AR {ast["n"]}']
+        
+        a_code = self.pass3(ast['a'])
+        b_code = self.pass3(ast['b'])
+        
+        asm_op = {'+':"AD", '-':"SU", '*':"MU", '/':"DI"}[op]
+        
+        # Evaluar a -> R0, push; evaluar b -> R0, SW para tener a en R1; operar
+        return a_code + ['PU'] + b_code + ['SW', 'PO'] + [asm_op]
