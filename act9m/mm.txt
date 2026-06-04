@@ -1,0 +1,79 @@
+﻿from collections import defaultdict
+
+
+def solve_puzzle(clues):
+    N = 6
+
+
+    def count(lst):
+        avail = sorted(set(range(1, N+1)) - set(lst))
+        def vis(order):
+            a, l, c = list(order), 0, 0
+            for v in lst:
+                if v == 0: v = a.pop()
+                if v > l: l = v; c += 1
+            return c
+        return min(vis(avail), vis(avail[::-1])), max(vis(avail), vis(avail[::-1]))
+
+
+    def check_clues(soln, i, j):
+        r = True
+        checks = [
+            (clues[j],                [soln[x][j] for x in range(N)]),
+            (clues[N + i],            [soln[i][x] for x in range(N-1, -1, -1)]),
+            (clues[2*N + (N-1-j)],   [soln[x][j] for x in range(N-1, -1, -1)]),
+            (clues[3*N + (N-1-i)],   [soln[i][x] for x in range(N)]),
+        ]
+        for clue, line in checks:
+            if clue != 0:
+                mn, mx = count(line)
+                if mn > clue or mx < clue:
+                    return False
+                if mn != mx:
+                    r = None
+        return r
+
+
+    def get_order():
+        def num_clues_row(i):
+            return (1 if clues[N+i] else 0) + (1 if clues[3*N+(N-1-i)] else 0)
+        def num_clues_col(j):
+            return (1 if clues[j] else 0) + (1 if clues[2*N+(N-1-j)] else 0)
+        rows = sorted(range(N), key=num_clues_row, reverse=True)
+        cols = sorted(range(N), key=num_clues_col, reverse=True)
+        row_sum = sum(num_clues_row(i) for i in range(N))
+        col_sum = sum(num_clues_col(j) for j in range(N))
+        if row_sum <= col_sum:
+            return [(i, j) for i in rows for j in range(N)]
+        else:
+            return [(i, j) for j in cols for i in range(N)]
+
+
+    visit_order = get_order()
+    soln = [[0]*N for _ in range(N)]
+    col_avail = [set(range(1, N+1)) for _ in range(N)]
+    row_avail = [set(range(1, N+1)) for _ in range(N)]
+
+
+    def solve(idx, pi, pj):
+        c = check_clues(soln, pi, pj)
+        if c is True and idx == len(visit_order):
+            return True
+        if c is False:
+            return False
+        i, j = visit_order[idx]
+        for v in range(1, N+1):
+            if v in col_avail[j] and v in row_avail[i]:
+                soln[i][j] = v
+                col_avail[j].discard(v)
+                row_avail[i].discard(v)
+                if solve(idx+1, i, j):
+                    return True
+                soln[i][j] = 0
+                col_avail[j].add(v)
+                row_avail[i].add(v)
+        return False
+
+
+    solve(0, 0, 0)
+    return tuple(tuple(row) for row in soln)
